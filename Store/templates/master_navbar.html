@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-global">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/1">JSV Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/1">Jewellery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/2">Skin care</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/3">Vintage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about-us">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item d-block d-sm-none">
+                    <a class="nav-link" href="{% url 'store:logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item d-block d-sm-none">
+                    <a class="nav-link" href="{% url 'store:login' %}">Login</a>
+                </li>
+                <li class="nav-item d-block d-sm-none">
+                    <a class="nav-link" href="{% url 'store:register' %}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <button class="btn-transparent d-sm-block d-none fs-3" type="button" id="cartToggleBtn">
+            <i class="fa-solid fa-bag-shopping"></i>
+            {% if cart_items %}
+            <span class="badge text-danger p-0">{{cart_items | length}}</span>
+            {% endif %}
+        </button>
+        {% if user.is_authenticated %}
+        <button class="btn btn-transparent d-none d-sm-block">
+            <a href="{% url 'store:logout' %}" title="logout"><i class="fa-solid fa-arrow-right-from-bracket text-dark"></i></a>
+        </button>
+        {% else %}
+        <button class="btn btn-transparent d-none d-sm-block">
+            <a href="{% url 'store:login' %}">Login</a>
+        </button> 
+        <button class="btn btn-transparent d-none d-sm-block">
+            <a href="{% url 'store:register' %}">Register</a>
+        </button>
+        {% endif %}
+    </div>
+</nav>

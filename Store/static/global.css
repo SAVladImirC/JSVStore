@@ -1,0 +1,30 @@
+.bg-global {
+    background-color: #F6F7F2 !important;
+}
+
+.btn-transparent {
+    background-color: transparent;
+    border-color: transparent;
+    border: none !important;
+    outline: none !important;
+}
+
+.btn-transparent:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.mh-50 {
+    max-height: 35vh;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
